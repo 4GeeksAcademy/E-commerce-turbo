@@ -2,16 +2,23 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
+import base64
 from flask import Flask, request, jsonify, url_for, send_from_directory
+from dotenv import load_dotenv
 from flask_migrate import Migrate
 from flask_swagger import swagger
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager
 from api.utils import APIException, generate_sitemap
-from api.models import db
+from api.models import db, bcrypt, jwt
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
 
 # from models import Person
+
+load_dotenv() 
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(
@@ -28,8 +35,12 @@ else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY') 
+
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
+bcrypt.init_app(app)
+jwt.init_app(app)
 
 # add the admin
 setup_admin(app)
