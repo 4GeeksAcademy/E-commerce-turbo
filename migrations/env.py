@@ -1,9 +1,10 @@
 import logging
 from logging.config import fileConfig
-
+from sqlalchemy import create_engine
 from flask import current_app
-
 from alembic import context
+from sqlalchemy import pool
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -12,7 +13,8 @@ config = context.config
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
-logger = logging.getLogger('alembic.env')
+# logger = logging.getLogger('alembic.env')
+
 
 
 def get_engine():
@@ -36,7 +38,8 @@ def get_engine_url():
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-config.set_main_option('sqlalchemy.url', get_engine_url())
+# config.set_main_option('sqlalchemy.url', get_engine_url())
+config.set_main_option("sqlalchemy.url", current_app.config.get("SQLALCHEMY_DATABASE_URI"))
 target_db = current_app.extensions['migrate'].db
 
 # other values from the config, defined by the needs of env.py,
@@ -65,7 +68,9 @@ def run_migrations_offline():
     """
     url = config.get_main_option("sqlalchemy.url")
     context.configure(
-        url=url, target_metadata=get_metadata(), literal_binds=True
+        url=url, 
+        target_metadata=get_metadata(), 
+        literal_binds=True
     )
 
     with context.begin_transaction():
@@ -83,16 +88,16 @@ def run_migrations_online():
     # this callback is used to prevent an auto-migration from being generated
     # when there are no changes to the schema
     # reference: http://alembic.zzzcomputing.com/en/latest/cookbook.html
-    def process_revision_directives(context, revision, directives):
-        if getattr(config.cmd_opts, 'autogenerate', False):
-            script = directives[0]
-            if script.upgrade_ops.is_empty():
-                directives[:] = []
-                logger.info('No changes in schema detected.')
+    # def process_revision_directives(context, revision, directives):
+    #     if getattr(config.cmd_opts, 'autogenerate', False):
+    #         script = directives[0]
+    #         if script.upgrade_ops.is_empty():
+    #             directives[:] = []
+    #             logger.info('No changes in schema detected.')
 
-    conf_args = current_app.extensions['migrate'].configure_args
-    if conf_args.get("process_revision_directives") is None:
-        conf_args["process_revision_directives"] = process_revision_directives
+    # conf_args = current_app.extensions['migrate'].configure_args
+    # if conf_args.get("process_revision_directives") is None:
+    #     conf_args["process_revision_directives"] = process_revision_directives
 
     connectable = get_engine()
 
@@ -100,7 +105,8 @@ def run_migrations_online():
         context.configure(
             connection=connection,
             target_metadata=get_metadata(),
-            **conf_args
+            # **conf_args
+            compare_type=True  # Añadido para comparar tipos de columnas
         )
 
         with context.begin_transaction():

@@ -12,7 +12,7 @@ from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from api.utils import APIException, generate_sitemap
 from api.models import db, bcrypt, jwt
-from api.routes import api
+from api.routes import routes
 from api.admin import setup_admin
 from api.commands import setup_commands
 
@@ -23,6 +23,8 @@ load_dotenv()
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../public/')
+
+
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
@@ -42,16 +44,15 @@ db.init_app(app)
 bcrypt.init_app(app)
 jwt.init_app(app)
 
+migrate = Migrate(app, db, compare_type=True)
 # add the admin
 setup_admin(app)
 
 # add the admin
 setup_commands(app)
 
-# Add all endpoints form the API with a "api" prefix
-app.register_blueprint(api, url_prefix='/api')
+app.register_blueprint(routes, url_prefix='/api')
 
-# Handle/serialize errors like a JSON object
 
 
 @app.errorhandler(APIException)
@@ -77,6 +78,8 @@ def serve_any_other_file(path):
     response = send_from_directory(static_file_dir, path)
     response.cache_control.max_age = 0  # avoid cache memory
     return response
+
+
 
 
 # this only runs if `$ python src/main.py` is executed
