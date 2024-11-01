@@ -1,3 +1,4 @@
+import os 
 import logging
 from logging.config import fileConfig
 from sqlalchemy import create_engine
@@ -10,9 +11,15 @@ from sqlalchemy import pool
 # access to the values within the .ini file in use.
 config = context.config
 
+# Obtener la ruta del archivo alembic.ini
+alembic_ini_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'alembic.ini')
+
+# Configurar el logging a partir del archivo alembic.ini
+fileConfig(alembic_ini_path)
+
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
-fileConfig(config.config_file_name)
+# fileConfig(config.config_file_name)
 # logger = logging.getLogger('alembic.env')
 
 

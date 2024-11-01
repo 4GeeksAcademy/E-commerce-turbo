@@ -31,20 +31,19 @@ app.url_map.strict_slashes = False
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace(
-        "postgres://", "postgresql://")
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY') 
 
-MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
+migrate = Migrate(app, db, compare_type=True)
 bcrypt.init_app(app)
 jwt.init_app(app)
 
-migrate = Migrate(app, db, compare_type=True)
+
 # add the admin
 setup_admin(app)
 
