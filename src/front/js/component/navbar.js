@@ -58,7 +58,7 @@ export const Navbar = () => {
     <Link className="dropdown-item" to="/hombres/ropa">Ropa</Link>
     <Link className="dropdown-item" to="/hombres/zapatos">Zapatos</Link>
   </div>
-</li>
+</li>c 
           </ul>
           <form className="form-inline my-2 my-lg-0" onSubmit={handleSearch}>
             <input

@@ -1,4 +1,5 @@
 import React from "react";
+import Button from 'react-bootstrap/Button';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
@@ -10,6 +11,9 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 //create your first component
 const Layout = () => {
@@ -24,6 +28,10 @@ const Layout = () => {
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
+                    <div className="container my-3">
+                        <h1>¡Hola, React Bootstrap!</h1>
+                        <Button variant="primary">Botón de React Bootstrap</Button>
+                    </div>
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
