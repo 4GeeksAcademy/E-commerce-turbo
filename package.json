@@ -18,15 +18,14 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.0",
+    "@babel/core": "^7.26.0",
     "@babel/eslint-parser": "^7.25.9",
     "@babel/plugin-proposal-class-properties": "^7.16.0",
     "@babel/plugin-transform-runtime": "^7.16.4",
-    "@babel/preset-env": "^7.16.4",
-    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
     "@babel/runtime": "^7.16.3",
-    "babel-loader": "^8.2.3",
-    "babel-plugin-transform-class-properties": "^6.10.2",
+    "babel-loader": "^8.4.1",
     "bc-console": "0.0.2",
     "css-loader": "^6.5.1",
     "dotenv-webpack": "^7.0.3",
@@ -38,7 +37,7 @@
     "file-loader": "^6.2.0",
     "gh-pages": "^6.2.0",
     "html-loader": "^3.0.1",
-    "html-webpack-plugin": "^5.5.0",
+    "html-webpack-plugin": "^5.6.3",
     "parse-github-url": "^1.0.2",
     "prettier": "^2.5.1",
     "remote-origin-url": "^2.0.0",
@@ -48,21 +47,6 @@
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0",
     "webpack-merge": "^5.8.0"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-transform-class-properties",
-      [
-        "@babel/plugin-transform-runtime",
-        {
-          "regenerator": true
-        }
-      ]
-    ]
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",

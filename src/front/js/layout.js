@@ -1,5 +1,5 @@
 import React from "react";
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
@@ -29,7 +29,7 @@ const Layout = () => {
                 <ScrollToTop>
                     <Navbar />
                     <div className="container my-3">
-                        <h1>¡Hola, React Bootstrap!</h1>
+                        <h1>¡Este es el componente que quiero que se vea!</h1>
                         <Button variant="primary">Botón de React Bootstrap</Button>
                     </div>
                     <Routes>

@@ -18,6 +18,7 @@ if(process.env.CODESPACE_NAME){
   publicUrl = `wss://${process.env.CODESPACE_NAME}-${port}.app.github.dev/ws`;
 }
 
+
 module.exports = merge(common, {
     mode: 'development',
     devtool: 'cheap-module-source-map',
@@ -33,6 +34,14 @@ module.exports = merge(common, {
           webSocketURL: publicUrl
         },
     },
+    resolve: {
+      extensions: ['.js', '.jsx']
+    },
+    
+   
+ 
+
+
     plugins: [
         // new FriendlyErrorsWebpackPlugin(),
         // new ErrorOverlayPlugin(),

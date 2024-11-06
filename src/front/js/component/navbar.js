@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from '/workspaces/E-commerce-turbo/src/front/img/Logo Eureco Aceite.jpg';
@@ -87,3 +88,5 @@ export const Navbar = () => {
 //   const handleInputChange = (event) => {
 // 	// Lógica para manejar el cambio en el input de búsqueda
 //   };
+
+export default Navbar;
