@@ -1,5 +1,4 @@
 import React from "react";
-// import Button from 'react-bootstrap/Button';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
@@ -12,6 +11,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Register from './components/Register';
 
 
 
@@ -28,14 +28,16 @@ const Layout = () => {
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
-                    <div className="container my-3">
+                    <Register />
+                    {/* <div className="container my-3">
                         <h1>¡Este es el componente que quiero que se vea!</h1>
                         <Button variant="primary">Botón de React Bootstrap</Button>
-                    </div>
+                    </div> */}
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
+                        <Route path="/register" element={<Register />} />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

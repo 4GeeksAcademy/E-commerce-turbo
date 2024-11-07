@@ -30,7 +30,7 @@ export const Navbar = () => {
             style={{ height: "100px" }} 
           />
 				</Link>
-				<button
+				{/* <button
           className="navbar-toggler"
           type="button"
           data-toggle="collapse"
@@ -88,5 +88,263 @@ export const Navbar = () => {
 //   const handleInputChange = (event) => {
 // 	// Lógica para manejar el cambio en el input de búsqueda
 //   };
+
+export default Navbar; */}
+
+
+
+
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeholder="Buscar productos..." />
+  <button type="submit"><i className="fas fa-search"></i></button>
+</div>
+
+{/* Enlaces de Navegación */}
+<ul className="navbar-links">
+  <li><Link to="/hombre">Hombre</Link></li>
+  <li><Link to="/mujer">Mujer</Link></li>
+  <li><Link to="/niños">Niños</Link></li>
+  <li><Link to="/ofertas">Ofertas</Link></li>
+</ul>
+
+{/* Iconos de Usuario y Carrito */}
+<div className="navbar-icons">
+  <Link to="/login" className="navbar-icon">
+    <i className="fas fa-user"></i>
+  </Link>
+  <Link to="/carrito" className="navbar-icon">
+    <i className="fas fa-shopping-cart"></i>
+    <span class
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeholder="Buscar productos..." />
+  <button type="submit"><i className="fas fa-search"></i></button>
+</div>
+
+{/* Enlaces de Navegación */}
+<ul className="navbar-links">
+  <li><Link to="/hombre">Hombre</Link></li>
+  <li><Link to="/mujer">Mujer</Link></li>
+  <li><Link to="/niños">Niños</Link></li>
+  <li><Link to="/ofertas">Ofertas</Link></li>
+</ul>
+
+{/* Iconos de Usuario y Carrito */}
+<div className="navbar-icons">
+  <Link to="/login" className="navbar-icon">
+    <i className="fas fa-user"></i>
+  </Link>
+  <Link t
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeholder="Buscar productos..." />
+  <button type="submit"><i className="fas fa-search"></i></button>
+</div>
+
+{/* Enlaces de Navegación */}
+<ul className="navbar-links">
+  <li><Link to="/hombre">Hombre</Link></li>
+  <li><Link to="/mujer">Mujer</Link></li>
+  <li><Link to="/niños">Niños</Link></li>
+  <li><Link to="/ofertas">Ofertas</Link></li>
+</ul>
+
+{/* Iconos de Usuario y Carrito */}
+<div className="navbar-icons">
+  <Link to="/login" className="navb
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeholder="Buscar productos..." />
+  <button type="submit"><i className="fas fa-search"></i></button>
+</div>
+
+{/* Enlaces de Navegación */}
+<ul className="navbar-links">
+  <li><Link to="/hombre">Hombre</Link></li>
+  <li><Link to="/mujer">Mujer</Link></li>
+  <li><Link to="/niños">Niños</Link></li>
+  <li><Link to="/ofertas">Ofertas</Link></li>
+</ul>
+
+{/* Iconos de Usuario y Carrito */}
+<div className="n
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeholder="Buscar productos..." />
+  <button type="submit"><i className="fas fa-search"></i></button>
+</div>
+
+{/* Enlaces de Navegación */}
+<ul className="navbar-links">
+  <li><Link to="/hombre">Hombre</Link></li>
+  <li><Link to="/mujer">Mujer</Link></li>
+  <li><Link to="/niños">Niños</Link></li>
+  <l
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeholder="Buscar productos..." />
+  <button type="submit"><i className="fas fa-search"></i></button>
+</div>
+
+{/* Enlaces de Navegación */}
+<ul className="navbar-links">
+  <li><Link to="/hombre">Hombre</Link></li>
+  <li><Link to="/muj
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeholder="Buscar productos..." />
+  <button type="submit"><i className="fas fa-search"></i></button>
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeholder="Buscar productos..." />
+  <button type="submit"><i className="fas f
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeholder="Buscar productos..." 
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeh
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Lin
+
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-l
+<nav className="navbar">
+{/* Logo */}
+<div className="navbar-logo">
+  <Link to="/">
+    <img src={logo} alt="Logo Tienda Online" />
+  </Link>
+</div>
+
+{/* Barra de Búsqueda */}
+<div className="navbar-search">
+  <input type="text" placeholder="Buscar productos..." />
+  <button type="submit"><i className="fas fa-search"></i></button>
+</div>
+
+{/* Enlaces de Navegación */}
+<ul className="navbar-links">
+  <li><Link to="/hombre">Hombre</Link></li>
+  <li><Link to="/mujer">Mujer</Link></li>
+  <li><Link to="/niños">Niños</Link></li>
+  <li><Link to="/ofertas">Ofertas</Link></li>
+</ul>
+
+{/* Iconos de Usuario y Carrito */}
+<div className="navbar-icons">
+  <Link to="/login" className="navbar-icon">
+    <i className="fas fa-user"></i>
+  </Link>
+  <Link to="/carrito" className="navbar-icon">
+    <i className="fas fa-shopping-cart"></i>
+    <span className="cart-count">0</span>
+  </Link>
+</div>
+</nav>
+);
+};
 
 export default Navbar;

@@ -10,6 +10,7 @@ from flask_swagger import swagger
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
 from api.models import db, bcrypt, jwt
 from api.routes import routes
@@ -42,6 +43,7 @@ db.init_app(app)
 migrate = Migrate(app, db, compare_type=True)
 bcrypt.init_app(app)
 jwt.init_app(app)
+CORS(app)
 
 
 # add the admin
@@ -51,6 +53,11 @@ setup_admin(app)
 setup_commands(app)
 
 app.register_blueprint(routes, url_prefix='/api')
+
+@app.route('/api/register', methods=['POST'])
+def register():
+    # Lógica de registro
+    return "Registro exitoso"
 
 
 
