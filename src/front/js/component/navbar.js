@@ -4,33 +4,33 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '/workspaces/E-commerce-turbo/src/front/img/Logo Eureco Aceite.jpg';
 import '../../styles/Navbar.css';
 
-
-
 export const Navbar = () => {
-	const [searchTerm, setSearchTerm] = useState('');
-	const navigate = useNavigate();
-  
-	const handleSearch = (event) => {
-	  event.preventDefault();
-	  if (searchTerm.trim()) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    if (searchTerm.trim()) {
       navigate(`/search?query=${searchTerm}`);
-	  }
-	};
+    }
+  };
 
-
-	return (
+  return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-		{/* <nav className="navbar navbar-light bg-light"> */}
-			<div className="container">
-				<Link to="/">
-				<img
+      {/* Navbar container */}
+      <div className="container">
+        {/* Logo */}
+        <Link to="/">
+          <img
             src={logo}
             alt="Logo de la Tienda"
             className="navbar-brand mb-0 h1"
-            style={{ height: "100px" }} 
+            style={{ height: "100px" }}
           />
-				</Link>
-				{/* <button
+        </Link>
+
+        {/* Navbar toggle button */}
+        <button
           className="navbar-toggler"
           type="button"
           data-toggle="collapse"
@@ -41,26 +41,31 @@ export const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
+        {/* Navbar collapse */}
         <div className="collapse navbar-collapse" id="navbarNav">
+          {/* Navbar links */}
           <ul className="navbar-nav mr-auto">
             <li className="nav-item dropdown">
-            <button
-    className="nav-link dropdown-toggle"
-    id="navbarDropdown"
-    role="button"
-    data-toggle="dropdown"
-    aria-haspopup="true"
-    aria-expanded="false"
-    style={{ border: "none", background: "none" }}
-  >
-    Hombres
-  </button>
-  <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-    <Link className="dropdown-item" to="/hombres/ropa">Ropa</Link>
-    <Link className="dropdown-item" to="/hombres/zapatos">Zapatos</Link>
-  </div>
-</li>c 
+              <button
+                className="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                style={{ border: "none", background: "none" }}
+              >
+                Hombres
+              </button>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <Link className="dropdown-item" to="/hombres/ropa">Ropa</Link>
+                <Link className="dropdown-item" to="/hombres/zapatos">Zapatos</Link>
+              </div>
+            </li>
           </ul>
+
+          {/* Search bar */}
           <form className="form-inline my-2 my-lg-0" onSubmit={handleSearch}>
             <input
               className="form-control mr-sm-2"
@@ -75,276 +80,21 @@ export const Navbar = () => {
             </button>
           </form>
         </div>
+
+        {/* User and Cart icons */}
+        <div className="navbar-icons">
+          <Link to="/login" className="navbar-icon">
+            <i className="fas fa-user"></i>
+          </Link>
+          <Link to="/carrito" className="navbar-icon">
+            <i className="fas fa-shopping-cart"></i>
+            <span className="cart-count">0</span>
+          </Link>
+        </div>
       </div>
     </nav>
   );
 };
 
-// const handleSearch = (event) => {
-// 	event.preventDefault();
-// 	// Lógica para manejar la búsqueda
-//   };
-  
-//   const handleInputChange = (event) => {
-// 	// Lógica para manejar el cambio en el input de búsqueda
-//   };
-
-export default Navbar; */}
-
-
-
-
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeholder="Buscar productos..." />
-  <button type="submit"><i className="fas fa-search"></i></button>
-</div>
-
-{/* Enlaces de Navegación */}
-<ul className="navbar-links">
-  <li><Link to="/hombre">Hombre</Link></li>
-  <li><Link to="/mujer">Mujer</Link></li>
-  <li><Link to="/niños">Niños</Link></li>
-  <li><Link to="/ofertas">Ofertas</Link></li>
-</ul>
-
-{/* Iconos de Usuario y Carrito */}
-<div className="navbar-icons">
-  <Link to="/login" className="navbar-icon">
-    <i className="fas fa-user"></i>
-  </Link>
-  <Link to="/carrito" className="navbar-icon">
-    <i className="fas fa-shopping-cart"></i>
-    <span class
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeholder="Buscar productos..." />
-  <button type="submit"><i className="fas fa-search"></i></button>
-</div>
-
-{/* Enlaces de Navegación */}
-<ul className="navbar-links">
-  <li><Link to="/hombre">Hombre</Link></li>
-  <li><Link to="/mujer">Mujer</Link></li>
-  <li><Link to="/niños">Niños</Link></li>
-  <li><Link to="/ofertas">Ofertas</Link></li>
-</ul>
-
-{/* Iconos de Usuario y Carrito */}
-<div className="navbar-icons">
-  <Link to="/login" className="navbar-icon">
-    <i className="fas fa-user"></i>
-  </Link>
-  <Link t
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeholder="Buscar productos..." />
-  <button type="submit"><i className="fas fa-search"></i></button>
-</div>
-
-{/* Enlaces de Navegación */}
-<ul className="navbar-links">
-  <li><Link to="/hombre">Hombre</Link></li>
-  <li><Link to="/mujer">Mujer</Link></li>
-  <li><Link to="/niños">Niños</Link></li>
-  <li><Link to="/ofertas">Ofertas</Link></li>
-</ul>
-
-{/* Iconos de Usuario y Carrito */}
-<div className="navbar-icons">
-  <Link to="/login" className="navb
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeholder="Buscar productos..." />
-  <button type="submit"><i className="fas fa-search"></i></button>
-</div>
-
-{/* Enlaces de Navegación */}
-<ul className="navbar-links">
-  <li><Link to="/hombre">Hombre</Link></li>
-  <li><Link to="/mujer">Mujer</Link></li>
-  <li><Link to="/niños">Niños</Link></li>
-  <li><Link to="/ofertas">Ofertas</Link></li>
-</ul>
-
-{/* Iconos de Usuario y Carrito */}
-<div className="n
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeholder="Buscar productos..." />
-  <button type="submit"><i className="fas fa-search"></i></button>
-</div>
-
-{/* Enlaces de Navegación */}
-<ul className="navbar-links">
-  <li><Link to="/hombre">Hombre</Link></li>
-  <li><Link to="/mujer">Mujer</Link></li>
-  <li><Link to="/niños">Niños</Link></li>
-  <l
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeholder="Buscar productos..." />
-  <button type="submit"><i className="fas fa-search"></i></button>
-</div>
-
-{/* Enlaces de Navegación */}
-<ul className="navbar-links">
-  <li><Link to="/hombre">Hombre</Link></li>
-  <li><Link to="/muj
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeholder="Buscar productos..." />
-  <button type="submit"><i className="fas fa-search"></i></button>
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeholder="Buscar productos..." />
-  <button type="submit"><i className="fas f
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeholder="Buscar productos..." 
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeh
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Lin
-
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-l
-<nav className="navbar">
-{/* Logo */}
-<div className="navbar-logo">
-  <Link to="/">
-    <img src={logo} alt="Logo Tienda Online" />
-  </Link>
-</div>
-
-{/* Barra de Búsqueda */}
-<div className="navbar-search">
-  <input type="text" placeholder="Buscar productos..." />
-  <button type="submit"><i className="fas fa-search"></i></button>
-</div>
-
-{/* Enlaces de Navegación */}
-<ul className="navbar-links">
-  <li><Link to="/hombre">Hombre</Link></li>
-  <li><Link to="/mujer">Mujer</Link></li>
-  <li><Link to="/niños">Niños</Link></li>
-  <li><Link to="/ofertas">Ofertas</Link></li>
-</ul>
-
-{/* Iconos de Usuario y Carrito */}
-<div className="navbar-icons">
-  <Link to="/login" className="navbar-icon">
-    <i className="fas fa-user"></i>
-  </Link>
-  <Link to="/carrito" className="navbar-icon">
-    <i className="fas fa-shopping-cart"></i>
-    <span className="cart-count">0</span>
-  </Link>
-</div>
-</nav>
-);
-};
-
 export default Navbar;
+ 

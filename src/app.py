@@ -16,6 +16,7 @@ from api.models import db, bcrypt, jwt
 from api.routes import routes
 from api.admin import setup_admin
 from api.commands import setup_commands
+import stripe
 
 # from models import Person
 
@@ -75,6 +76,33 @@ def sitemap():
     return send_from_directory(static_file_dir, 'index.html')
 
 # any other endpoint will try to serve it like a static file
+
+# endpoint para pago 
+stripe.api_key = 'tu_clave_secreta_de_stripe'
+
+@app.route('/create-checkout-session', methods=['POST'])
+def create_checkout_session():
+    try:
+        data = request.json
+        session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                'price_data': {
+                    'currency': 'usd',
+                    'product_data': {
+                        'name': data['product_name'],
+                    },
+                    'unit_amount': int(data['price'] * 100),  # Precio en centavos
+                },
+                'quantity': data['quantity'],
+            }],
+            mode='payment',
+            success_url='http://localhost:3000/success',
+            cancel_url='http://localhost:3000/cancel',
+        )
+        return jsonify({'id': session.id})
+    except Exception as e:
+        return jsonify(error=str(e)), 403
 
 
 @app.route('/<path:path>', methods=['GET'])

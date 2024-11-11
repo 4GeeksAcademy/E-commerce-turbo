@@ -6,12 +6,16 @@ import { BackendURL } from "./component/backendURL";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
+import ProductPage from "./pages/ProductPage";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Register from './components/Register';
+import Register from './component/Register';
+import Success from './Success';
+import Cancel from './Cancel';
+
 
 
 
@@ -28,16 +32,16 @@ const Layout = () => {
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
-                    <Register />
-                    {/* <div className="container my-3">
-                        <h1>¡Este es el componente que quiero que se vea!</h1>
-                        <Button variant="primary">Botón de React Bootstrap</Button>
-                    </div> */}
+                  
+                    
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
-                        <Route path="/register" element={<Register />} />
+                        <Route element={<Register />} path="/register" />
+                        <Route element={<ProductPage />} path="/product" /> {/* Nueva ruta a ProductPage */}
+                        <Route element={<Success />} path="/success" />
+                        <Route element={<Cancel />} path="/cancel" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

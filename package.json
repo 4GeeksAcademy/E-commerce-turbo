@@ -50,13 +50,15 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",
     "prop-types": "^15.6.1",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",
     "react-polyfills": "0.0.1",
-    "react-router-dom": "^6.27.0"
+    "react-router-dom": "^6.28.0"
   },
   "directories": {
     "doc": "docs"
