@@ -13,8 +13,8 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './component/Register';
-import Success from './Success';
-import Cancel from './Cancel';
+import Success from './pages/Success';
+import Cancel from './pages/Cancel';
 
 
 

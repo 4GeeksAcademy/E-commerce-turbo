@@ -1,7 +1,7 @@
 // src/pages/ProductPage.js
 import React, { useState } from 'react';
-import ProductDisplay from '../components/ProductDisplay';
-import CheckoutButton from '../components/CheckoutButton';
+import ProductDisplay from '../component/ProductDisplay';
+import CheckoutButton from '../component/CheckoutButton';
 
 function ProductPage() {
     const [product] = useState({
