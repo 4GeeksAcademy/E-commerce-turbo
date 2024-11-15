@@ -2,19 +2,22 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
-
+import injectContext from "./store/appContext";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import ProductPage from "./pages/ProductPage";
-import injectContext from "./store/appContext";
-
+import Success from './pages/Success';
+import Cancel from './pages/Cancel';
+import Register from './component/Register';
+import ProductList from './component/ProductList';
+import Product from './component/Product';
+import Cart from './component/Cart';
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Register from './component/Register';
-import Success from './pages/Success';
-import Cancel from './pages/Cancel';
+
+
 
 
 
@@ -35,14 +38,23 @@ const Layout = () => {
                   
                     
                     <Routes>
-                        <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<Register />} path="/register" />
-                        <Route element={<ProductPage />} path="/product" /> {/* Nueva ruta a ProductPage */}
-                        <Route element={<Success />} path="/success" />
-                        <Route element={<Cancel />} path="/cancel" />
-                        <Route element={<h1>Not found!</h1>} />
+                       {/* Rutas principales */}
+                    <Route path="/" element={<Home />} />
+                    <Route path="/demo" element={<Demo />} />
+                    <Route path="/single/:theid" element={<Single />} />
+                    <Route path="/register" element={<Register />} />
+
+                    {/* Rutas de productos */}
+                    <Route path="/products" element={<ProductList />} />
+                    <Route path="/product/:id" element={<Product />} />
+                    <Route path="/cart" element={<Cart />} />
+
+                    {/* Rutas de pago */}
+                    <Route path="/success" element={<Success />} />
+                    <Route path="/cancel" element={<Cancel />} />
+
+                    {/* Ruta de error para rutas no definidas */}
+                    <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
                 </ScrollToTop>
