@@ -1,7 +1,10 @@
 import stripe
+from dotenv import load_dotenv
+import os
 
-# Configura tu clave secreta de Stripe
-stripe.api_key = 'sk_test_51QLEtiHTXgBGvYTXovIlbyvS01CZ21F2N8ZxxXFmiNYH8BwBprQtKyJQAFcLIBjpQBptWM2e4FA9ZkWTRCeID6M900NISGnObD'
+load_dotenv()
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
+
 
 def create_payment_intent(amount, currency="usd"):
     """

@@ -5,6 +5,7 @@ import os
 import base64
 from flask import Flask, request, jsonify, url_for, send_from_directory
 from dotenv import load_dotenv
+
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_sqlalchemy import SQLAlchemy
@@ -16,11 +17,19 @@ from api.models import db, bcrypt, jwt
 from api.routes import routes
 from api.admin import setup_admin
 from api.commands import setup_commands
+from api.stripe_payment import stripe_bp
+# from api.stripe_payment import create_payment_intent  
 import stripe
 
 # from models import Person
 
 load_dotenv() 
+
+print(f"Stripe API Key: {os.getenv('stripe.api_key')}")
+
+
+stripe.api_key = os.getenv('stripe.api_key')
+
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(
@@ -54,6 +63,10 @@ setup_admin(app)
 setup_commands(app)
 
 app.register_blueprint(routes, url_prefix='/api')
+app.register_blueprint(stripe_bp)
+# app.register_blueprint(create_payment_intent)
+
+
 
 @app.route('/api/register', methods=['POST'])
 def register():
@@ -66,7 +79,6 @@ def register():
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
-# generate sitemap with all your endpoints
 
 
 @app.route('/')
@@ -75,10 +87,9 @@ def sitemap():
         return generate_sitemap(app)
     return send_from_directory(static_file_dir, 'index.html')
 
-# any other endpoint will try to serve it like a static file
 
 # endpoint para pago 
-stripe.api_key = 'tu_clave_secreta_de_stripe'
+
 
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():

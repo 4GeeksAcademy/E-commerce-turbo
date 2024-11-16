@@ -1,4 +1,4 @@
-// src/components/Cart.js
+
 import React, { useEffect, useState } from 'react';
 import { fetchCart } from '../api';
 

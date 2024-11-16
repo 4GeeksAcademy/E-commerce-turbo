@@ -5,7 +5,7 @@ import axios from 'axios';
 function CheckoutButton({ product }) {
     const handleCheckout = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/create-checkout-session', {
+            const response = await axios.post('http://localhost:3001/create-checkout-session', {
                 product_name: product.name,
                 price: product.price,
                 quantity: product.quantity,
@@ -21,3 +21,4 @@ function CheckoutButton({ product }) {
 }
 
 export default CheckoutButton;
+                                                                    
