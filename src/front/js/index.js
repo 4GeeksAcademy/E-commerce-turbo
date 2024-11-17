@@ -1,20 +1,12 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
-
-
-//include your index.scss file into the bundle
 import "../styles/index.css";
-
-//import your own components
 import Layout from "./layout";
 
-//  const container = document.querySelector("#app");
-//  const root = createRoot(container);
 
+require('dotenv').config();
  const root = ReactDOM.createRoot(document.getElementById('app'));
 
 

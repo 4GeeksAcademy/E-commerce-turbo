@@ -18,11 +18,12 @@ def create_payment_intent(amount, currency="usd"):
         
         payment_intent = stripe.PaymentIntent.create(
             amount=amount,
-            currency=currency
+            currency=currency,
+             metadata={'integration_check': 'accept_a_payment'},
         )
         return payment_intent
-    except stripe.error.StripeError as e:
-      
+    
+    except stripe.error.StripeError as e:      
         return {"error": str(e)}
 
 def create_charge(amount, currency="usd", source="tok_visa"):

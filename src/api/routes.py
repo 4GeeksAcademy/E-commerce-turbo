@@ -6,11 +6,36 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 from api.models import db, User, Product, Order
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
+from payments import create_payment_intent
+import stripe
+
+
 
 routes = Blueprint('routes', __name__)
 CORS(routes) 
+
+stripe.api_key = 'tu_clave_secreta_de_stripe'
+
 # # Allow CORS requests to this API
 # CORS(api)
+
+
+def create_payment(app: Flask):
+    @routes.route('/api/create-payment-intent', methods=['POST'])
+    def create_payment():
+        data = request.json
+        amount = data.get('amount') 
+
+        if not amount:
+            return jsonify({'error': 'Amount is required'}), 400
+
+        # Crear el PaymentIntent
+    try:
+        payment_intent = create_payment_intent(amount)
+        return jsonify(payment_intent), 200  
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
+
 
 
 @routes.route('/hello', methods=['POST', 'GET'])

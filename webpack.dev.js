@@ -2,7 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-// const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+
 
 const port = 3000;
 let publicUrl = `ws://localhost:${port}/ws`;
@@ -43,19 +44,10 @@ module.exports = merge(common, {
 
 
     plugins: [
-        // new FriendlyErrorsWebpackPlugin(),
-        // new ErrorOverlayPlugin(),
-        // new PrettierPlugin({
-        //     parser: "babylon",
-        //     printWidth: 120,             // Specify the length of line that the printer will wrap on.
-        //     tabWidth: 4,                // Specify the number of spaces per indentation-level.
-        //     useTabs: true,              // Indent lines with tabs instead of spaces.
-        //     bracketSpacing: true,
-        //     extensions: [ ".js", ".jsx" ],
-        //     jsxBracketSameLine: true,
-        //     semi: true,                 // Print semicolons at the ends of statements.
-        //     encoding: 'utf-8'           // Which encoding scheme to use on files
-        // }),
-        new webpack.HotModuleReplacementPlugin()
-    ]
+      new webpack.HotModuleReplacementPlugin(),
+      new Dotenv({  // Configuración para dotenv-webpack
+          path: './.env', // Ruta al archivo .env
+          safe: false,    // Cambiar a true para validar las variables requeridas
+      }),
+  ]
 });

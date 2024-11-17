@@ -1,8 +1,8 @@
-# /src/api/stripe_payment.py
 import stripe
 from dotenv import load_dotenv
 import os
 from flask import Blueprint, jsonify, request
+from flask import jsonify
 
 # Cargar las variables de entorno
 load_dotenv()

@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from "axios";
+import { stripePublicKey, backendUrl } from "./config"; 
+import '../styles/Checkout.css';
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+
+// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(stripePublicKey);
 
 const Checkout = () => {
   const [paymentIntentId, setPaymentIntentId] = useState(null);
@@ -16,7 +20,7 @@ const Checkout = () => {
   // Crear el PaymentIntent llamando al backend
  const createPaymentIntent = async () => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/create-payment-intent`, {
+      const response = await axios.post(`${backendUrl}/api/create-payment-intent`, {
         amount: 2000,  // $20.00 en centavos
       });
       setPaymentIntentId(response.data.id);
@@ -61,7 +65,7 @@ const Checkout = () => {
   }, []);
 
   return (
-    <div>
+    <div className="checkout-container">
       <h2>Formulario de Pago</h2>
       <form onSubmit={handleCheckout}>
         <div>

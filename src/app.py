@@ -5,7 +5,6 @@ import os
 import base64
 from flask import Flask, request, jsonify, url_for, send_from_directory
 from dotenv import load_dotenv
-
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_sqlalchemy import SQLAlchemy
@@ -18,17 +17,26 @@ from api.routes import routes
 from api.admin import setup_admin
 from api.commands import setup_commands
 from api.stripe_payment import stripe_bp
-# from api.stripe_payment import create_payment_intent  
+from routes import create_payment 
+from api.stripe_payment import create_payment_intent
+from payments import create_payment_intent
 import stripe
 
-# from models import Person
+
 
 load_dotenv() 
 
-print(f"Stripe API Key: {os.getenv('stripe.api_key')}")
+# Acceder a las variables de entorno
+DATABASE_URL = os.getenv('DATABASE_URL')
+FLASK_APP_KEY = os.getenv('FLASK_APP_KEY')
+JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+STRIPE_API_KEY = os.getenv('stripe.api_key')
 
+print(f"Database URL: {DATABASE_URL}")
+print(f"Stripe API Key: {STRIPE_API_KEY}")
 
-stripe.api_key = os.getenv('stripe.api_key')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
@@ -54,19 +62,19 @@ migrate = Migrate(app, db, compare_type=True)
 bcrypt.init_app(app)
 jwt.init_app(app)
 CORS(app)
+create_payment(app)
 
-
-# add the admin
 setup_admin(app)
 
-# add the admin
 setup_commands(app)
 
 app.register_blueprint(routes, url_prefix='/api')
 app.register_blueprint(stripe_bp)
 # app.register_blueprint(create_payment_intent)
 
-
+@app.route('/')
+def home():
+    return 'Bienvenido a la tienda'
 
 @app.route('/api/register', methods=['POST'])
 def register():
@@ -90,6 +98,16 @@ def sitemap():
 
 # endpoint para pago 
 
+@app.route('/api/create-payment-intent', methods=['POST'])
+def create_payment():
+    data = request.json
+    amount = data.get('amount')  
+    if not amount:
+        return jsonify({'error': 'Amount is required'}), 400
+
+    # Llamar a la función que crea el PaymentIntent
+    payment_intent = create_payment_intent(amount)
+    return jsonify(payment_intent)
 
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
@@ -130,4 +148,4 @@ def serve_any_other_file(path):
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3001))
-    app.run(host='0.0.0.0', port=PORT, debug=True)
+    app.run(debug=True, host="0.0.0.0", port=3001)
